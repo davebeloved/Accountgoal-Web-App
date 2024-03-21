@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logopic from '../image/logopic.png';
 
-const OtpVerification = () => {
+const VerifyPasswordReset = () => {
   return (
     <div className='w-full h-full flex'>
       <div className='w-1/2 bg-white flex flex-col justify-start items-start'>
@@ -10,7 +10,7 @@ const OtpVerification = () => {
           <img src={logopic} alt="accounts goal image" className='w-64 h-64 text-blue-500' />
         </div>
         <div className="text-right px-32">
-          <h1 className='text-3xl text-bold text-left'>OTP Verification</h1>
+          <h1 className='text-3xl text-bold text-left'>Password Reset</h1>
           <p className="text-justify w-full whitespace-normal">
             We've sent an otp to the mail you provided us
           </p>
@@ -70,4 +70,4 @@ const OtpVerification = () => {
   );
 }
 
-export default OtpVerification;
+export default VerifyPasswordReset;
