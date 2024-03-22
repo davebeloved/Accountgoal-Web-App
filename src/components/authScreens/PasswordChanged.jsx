@@ -10,9 +10,9 @@ const SignUpSuccesful = () => {
         </div>
         <div className=" justify-center items-center mt-12  text-center">
         
-          <h1 className='text-3xl text-bold '>Accounts Successfully Created</h1><br/>
+          <h1 className='text-3xl text-bold '>Password Changed</h1><br/>
           <p className="text-center whitespace-normal">
-            "Welcome onboard - you're set to explore and utilize our <br/>powerful tools!"
+            Your password has been successfully changed. You can now log in <br/> with your new password
           </p>
         </div>
       </div>

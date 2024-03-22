@@ -7,6 +7,7 @@ import ForgotPassword from "./components/authScreens/ForgotPassword";
 import VerifyPasswordReset from "./components/authScreens/VerifyPasswordReset";
 import PasswordReset from "./components/authScreens/PasswordReset";
 import SignUpSuccesful from "./components/authScreens/SignUpSuccesful";
+import PasswordChanged from "./components/authScreens/PasswordChanged";
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/verify-password-reset" element={<VerifyPasswordReset/>} />
         <Route path="/password-reset" element={<PasswordReset/>} />
         <Route path="/signup-succesful" element={<SignUpSuccesful/>} />
+        <Route path="/password-changed" element={<PasswordChanged/>} />
       </Routes>
     </Router>
  );

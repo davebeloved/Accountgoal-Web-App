@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logopic from '../image/logopic.png';
+import circleimg from '../image/circleimg.png';
 
 const Signup = () => {
   return (
     <div className='w-full h-full flex'>
       <div className='w-1/2 bg-white flex flex-col justify-start items-start'>
-        <div className="pl-4 pt-4">
-          <img src={logopic} alt="accounts goal image" className='w-64 h-64 text-blue-500' />
-        </div>
-        <div className="text-right px-32">
+      <div className="pl-4 pt-0 ">
+  <img src={logopic} alt="accounts goal image" className='w-64 h-64 text-blue-500' />
+</div>
+
+        <div className="text-right px-32 mt-0">
           <h1 className='text-3xl text-bold text-left'>Create account</h1>
           <p className="text-justify w-full whitespace-normal">
             It's your first step towards the streamline management and enhanced<br />
@@ -41,7 +43,7 @@ const Signup = () => {
               <input className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************" />
             </div>
             <div className="flex items-center justify-center">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-40 rounded-full focus:outline-none focus:shadow-outline" type="button">
+              <button className="bg-blue-500 hover:bg-blue-500 text-white font-bold py-2 px-44 rounded-full focus:outline-none focus:shadow-outline" type="button">
                 Sign Up
               </button>
             </div>
@@ -49,7 +51,8 @@ const Signup = () => {
           <p className="text-center pl-8 justify-center">Already have an account? <a className="text-blue-500 text-bold" href='/login'>Login</a></p>
         </div>
       </div>
-      <div className='w-1/2 bg-blue-500 h-full flex flex-col justify-end items-center'>
+      <div className='w-1/2 h-screen bg-blue-500 flex flex-col justify-end items-center'>
+      <img src={circleimg} alt="accounts goal 3d image" className='w-692 h-732  text-blue-500 justify-center' />
         <h1 className='text-2xl text-bold text-white text-center'>Geo-Client Mapping Interface</h1>
         <p className='text-white mb-8'>Navigate your sales territory with ease! Our Map View helps you locate clients,</p>
       </div>

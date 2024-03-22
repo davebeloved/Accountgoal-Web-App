@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logopic from '../image/logopic.png';
+import circleimg from '../image/circleimg.png';
 
 const VerifyPasswordReset = () => {
   return (
@@ -62,7 +63,8 @@ const VerifyPasswordReset = () => {
           <p className="text-center pl-8 justify-right">Send code again <strong>00.30</strong></p>
         </div>
       </div>
-      <div className='w-1/2 bg-blue-500 h-full flex flex-col justify-end items-center'>
+      <div className='w-1/2 bg-blue-500 h-screen flex flex-col justify-end items-center'>
+      <img src={circleimg} alt="accounts goal 3d image" className='w-692 h-732  text-blue-500 justify-center' />
         <h1 className='text-2xl text-bold text-white text-center'>Geo-Client Mapping Interface</h1>
         <p className='text-white mb-8'>Navigate your sales territory with ease! Our Map View helps you locate clients,</p>
       </div>
