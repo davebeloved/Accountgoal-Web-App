@@ -43,7 +43,7 @@ const PasswordReset = () => {
         </div>
       </div>
       <div className='w-1/2 bg-blue-500 h-screen flex flex-col justify-end items-center'>
-      <img src={circleimg} alt="accounts goal 3d image" className='w-692 h-732  text-blue-500 justify-center' />
+      <img src={circleimg} alt="accounts goal 3d image" className='w-692 h-732 text-blue-500 justify-center' />
         <h1 className='text-2xl text-bold text-white text-center'>Geo-Client Mapping Interface</h1>
         <p className='text-white mb-8'>Navigate your sales territory with ease! Our Map View helps you locate clients,</p>
       </div>

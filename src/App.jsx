@@ -8,6 +8,7 @@ import VerifyPasswordReset from "./components/authScreens/VerifyPasswordReset";
 import PasswordReset from "./components/authScreens/PasswordReset";
 import SignUpSuccesful from "./components/authScreens/SignUpSuccesful";
 import PasswordChanged from "./components/authScreens/PasswordChanged";
+import CreateOrganization from "./components/organization/CreateOrganization";
 
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/password-reset" element={<PasswordReset/>} />
         <Route path="/signup-succesful" element={<SignUpSuccesful/>} />
         <Route path="/password-changed" element={<PasswordChanged/>} />
+        <Route path="/create-organization" element={<CreateOrganization/>} />
       </Routes>
     </Router>
  );
