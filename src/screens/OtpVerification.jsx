@@ -4,7 +4,7 @@ import Logo from '../assets/logopic.png';
 import CircleImg from '../assets/circleimg.png';
 import Globe from '../assets/globe.png';
 
-const Signin = () => {
+const OtpVerification = () => {
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 md:h-screen '>
     <div className='h-full w-full md:overflow-y-auto -mt-12'>
@@ -13,32 +13,32 @@ const Signin = () => {
         </div>
         <form className='px-8 md:px-10 lg:px-20 -mt-7 '>
         <div>
-        <h2 className='font-inter font-bold text-center -mt-16 md:-mt-0 md:text-left text-xl'>Welcome Back</h2>
-        <p className='font-inter text-[#5C5C5C] text-[12px] md:text-[14px] text-center md:text-left'> Let's get you starte from where you stopped.</p>
+        <h2 className='font-inter font-bold text-center -mt-16 md:-mt-0 md:text-left text-xl'>OTP Verification</h2>
+        <p className='font-inter text-[#5C5C5C] text-[12px] md:text-[14px] text-center md:text-left'> We’ve sent an otp to the mail you provided us</p>
+        </div>
+        <div className='flex items-center gap-x-3 justify-center'>
+
+        <div className='border-2 border-[#d7d7d7d7] w-20 h-20 rounded-full overflow-hiddenborder-[#dfdfdf] my-20 flex items-center justify-center'>
+          <input type="text"  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
         </div>
 
-        <div className='flex flex-col gap-y-1 mt-12'>
-          <label className='font-inter' htmlFor="email">Email <span className='text-[#ed0202]'>*</span></label>
-          <input type="text" placeholder='example@company.com' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
+        <div className='border-2 border-[#d7d7d7d7] w-20 h-20 rounded-full overflow-hiddenborder-[#dfdfdf] my-20 flex items-center justify-center'>
+          <input type="text"  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
+        </div>
+
+        <div className='border-2 border-[#d7d7d7d7] w-20 h-20 rounded-full overflow-hiddenborder-[#dfdfdf] my-20 flex items-center justify-center'>
+          <input type="text"  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
+        </div>
+
+        <div className='border-2 border-[#d7d7d7d7] w-20 h-20 rounded-full overflow-hiddenborder-[#dfdfdf] my-20 flex items-center justify-center'>
+          <input type="text"  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
+        </div>
         </div>
 
 
-
-        <div className='flex flex-col gap-y-1 mt-7'>
-          <label className='font-inter' htmlFor="password">Password <span className='text-[#ed0202]'>*</span></label>
-          <input type="password" placeholder='********' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
-        </div>
-
-        <div className='flex items-center justify-between mt-5'>
-            <div className='flex items-center gap-x-1'>
-                <input type="checkbox" />
-                <span className='font-inter text-[#777777] text-[12px]'>Remember me</span>
-            </div>
-            <Link className='font-inter text-[#777777] text-[12px]'>Forgotton Password?</Link>
-        </div>
 
           <button className='bg-[#4169e1] w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6'>Signin</button>
-          <p className='font-inter text-[14px] flex items-center gap-x-1 text-center justify-center mt-1'>Dont have an account? <Link to={'/'} className='text-[#4169e1] font-semibold italic text-[14px] underline'>Signup</Link></p>
+          <p className='font-inter text-[14px] flex items-center gap-x-1 text-center justify-end mt-1'>Send code again <span to={'/'} className='te font-bold  text-[14px] '>00:30</span></p>
         </form>
 
       </div>
@@ -57,7 +57,7 @@ const Signin = () => {
   )
 }
 
-export default Signin
+export default OtpVerification
 
 
 

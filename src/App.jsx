@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Signup from "./screens/Signup";
-import OtpVerification from "./components/authScreens/OtpVerification";
+import OtpVerification from "./screens/OtpVerification";
 import ForgotPassword from "./components/authScreens/ForgotPassword";
 import VerifyPasswordReset from "./components/authScreens/VerifyPasswordReset";
 import PasswordReset from "./components/authScreens/PasswordReset";
