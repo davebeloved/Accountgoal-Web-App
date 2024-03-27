@@ -6,18 +6,18 @@ import Globe from '../assets/globe.png';
 
 const Signup = () => {
   return (
-    <div className='grid grid-cols-2 h-screen '>
+    <div className='grid grid-cols-1 md:grid-cols-2 h-screen '>
       <div className='h-full w-full overflow-y-auto -mt-12'>
-        <div className='w-44'>
+        <div className='md:w-44 w-52 mx-auto md:mx-0'>
         <img src={Logo} alt='logo' className='w-full h-full'/>
         </div>
-        <form className='px-20 -mt-7 '>
+        <form className='px-8 md:px-10 lg:px-20 -mt-7 '>
         <div>
-          <h2 className='font-inter font-bold'>Create Account</h2>
-          <p className='font-inter text-[#5C5C5C] text-[14px]'> it's your first step towards streamlined management and enhanced productivity.</p>
+          <h2 className='font-inter font-bold text-center -mt-16 md:-mt-0 md:text-left text-xl'>Create Account</h2>
+          <p className='font-inter text-[#5C5C5C] text-[12px] md:text-[14px] text-center md:text-left'> it's your first step towards streamlined management and enhanced productivity.</p>
         </div>
 
-        <div className='flex flex-col gap-y-1 mt-4'>
+        <div className='flex flex-col gap-y-1 mt-14 md:mt-4'>
           <label className='font-inter' htmlFor="email">Email <span className='text-[#ed0202]'>*</span></label>
           <input type="text" placeholder='example@company.com' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
         </div>
@@ -47,7 +47,7 @@ const Signup = () => {
         </form>
 
       </div>
-      <div className='bg-blue-500 h-full flex flex-col items-center'>
+      <div className='hidden md:flex bg-blue-500 h-full  flex-col items-center'>
         <div className='relative h-[400px] w-full pt-10 flex flex-col items-center'>
         <div className='circleImg w-[400px] h-[400px] rounded-full flex flex-col justify-center items-center'>
         </div>
