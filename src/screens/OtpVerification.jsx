@@ -1,10 +1,69 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/logopic.png';
 import CircleImg from '../assets/circleimg.png';
 import Globe from '../assets/globe.png';
 
 const OtpVerification = () => {
+
+  const [loading, setLoading] =  useState(false);
+
+  const [error, setError] =  useState(null);
+
+  const [otp1, setOtp1] = useState("")
+  const [otp2, setOtp2] = useState("")
+  const [otp3, setOtp3] = useState("")
+  const [otp4, setOtp4] = useState("")
+  const [userId, setUserId] = useState("");
+  const  [sucess, setSucess] = useState(null);
+
+  const [data, setData] = useState([])
+  useEffect(() => {
+      if(localStorage.getItem("usersparameter")){
+        setData(JSON.parse(localStorage.getItem("usersparameter")))
+      }
+  }, [])
+  
+  
+
+  
+
+const Navigate = useNavigate()
+
+const handleSubmit =  async (e) => {
+  e.preventDefault()
+
+  let credentials= {userId: data.userId, otp: otp1 + otp2 + otp3 + otp4};
+
+  try {
+    setLoading: true;
+    
+    const response = await axios.post("https://api.accountsgoal.com/api/verifyotp", credentials, {
+      headers: {
+        "Content-Type": "application/json; charset= UTF-8",
+        "Access-Control-Allow-Origin": "*",
+      }
+    })
+
+    if(response) {
+      setSucess("OTP Veified Succesfully")
+      console.log(response.data.message);
+      setTimeout(() => {
+        Navigate("/signup-succesful")
+      }, 1000);
+
+    }
+    setLoading(false)
+    
+  } catch (error) {
+    setError(error.response?.data?.msg)
+    setLoading(false);
+    console.log(error);
+    
+  }
+
+}
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 md:h-screen '>
     <div className='h-full w-full md:overflow-y-auto -mt-12'>
@@ -16,28 +75,33 @@ const OtpVerification = () => {
         <h2 className='font-inter font-bold text-center -mt-16 md:-mt-0 md:text-left text-xl'>OTP Verification</h2>
         <p className='font-inter text-[#5C5C5C] text-[12px] md:text-[14px] text-center md:text-left'> We’ve sent an otp to the mail you provided us</p>
         </div>
+
+        
+        {error && (<p className='bg-red-500 text-center  text-white py-3 w-full mt-5 '>{error}</p>)}
+        {sucess && (<p className='bg-green-500 text-center text-white py-3 w-full mt-5 '>{error}</p>)}
+
         <div className='flex items-center gap-x-3 justify-center'>
-
+   <input type='hidden' onChange={(e) => setUserId(e.target.value)} value={data.userId} name='userId' onSubmit={handleSubmit} />
         <div className='border-2 border-[#d7d7d7d7] w-20 h-20 rounded-full overflow-hiddenborder-[#dfdfdf] my-20 flex items-center justify-center'>
-          <input type="text"  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
-        </div>
-
-        <div className='border-2 border-[#d7d7d7d7] w-20 h-20 rounded-full overflow-hiddenborder-[#dfdfdf] my-20 flex items-center justify-center'>
-          <input type="text"  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
+          <input type="text" onChange={(e) => setOtp1(e.target.value)} value={otp1} name='otp1' className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
         </div>
 
         <div className='border-2 border-[#d7d7d7d7] w-20 h-20 rounded-full overflow-hiddenborder-[#dfdfdf] my-20 flex items-center justify-center'>
-          <input type="text"  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
+          <input type="text" onChange={(e) => setOtp2(e.target.value)} value={otp2} name='otp2'  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
         </div>
 
         <div className='border-2 border-[#d7d7d7d7] w-20 h-20 rounded-full overflow-hiddenborder-[#dfdfdf] my-20 flex items-center justify-center'>
-          <input type="text"  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
+          <input type="text" onChange={(e) => setOtp3(e.target.value)} value={otp3} name='otp3'  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
+        </div>
+
+        <div className='border-2 border-[#d7d7d7d7] w-20 h-20 rounded-full overflow-hiddenborder-[#dfdfdf] my-20 flex items-center justify-center'>
+          <input type="text"  onChange={(e) => setOtp4(e.target.value)} value={otp4} name='otp1'  className='border-2   px-3 text-center text-2xl py-2  outline-none w-full h-full border-none bg-transparent rounded-full flex items-center justify-center'/>
         </div>
         </div>
 
 
 
-          <button className='bg-[#4169e1] w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6'>Verify</button>
+          <button type='submit'  className='bg-[#4169e1] w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6'>Verify</button>
           <p className='font-inter text-[14px] flex items-center gap-x-1 text-center justify-end mt-1'>Send code again <span to={'/'} className='te font-bold  text-[14px] '>00:30</span></p>
         </form>
 

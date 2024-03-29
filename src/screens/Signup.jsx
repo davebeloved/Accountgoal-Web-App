@@ -1,48 +1,122 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, json, useNavigate } from 'react-router-dom';
 import Logo from '../assets/logopic.png';
 import CircleImg from '../assets/circleimg.png';
 import Globe from '../assets/globe.png';
+import axios from 'axios';
+import { useState } from 'react';
+
 
 const Signup = () => {
+
+  const [loading, setLoading] =  useState(false);
+
+  const [error, setError] =  useState(null);
+
+  const [users, setUsers] =  useState({email: "", fullName: "", mobile: "", password: "", confirmPassword: "" });
+
+  const  [sucess, setSucess] = useState(null);
+
+  const handleChange = (e) =>{
+    let value = e.target.value;
+    let name = e.target.name;
+
+    setUsers((prevalue) => {
+      return {
+        ...prevalue,
+        [name]: value,
+      };
+  });
+}
+
+const Navigate = useNavigate()
+
+const handleSubmit =  async (e) => {
+  e.preventDefault()
+
+  if(!users.email || !users.fullName || !users.mobile || !users.mobile || !users.password || !users.confirmPassword) {
+    setError("Please fill all empty field")
+
+    return 
+
+  } 
+  let credentials= {email: users.email, fullName: users.fullName, mobile: users.mobile, password:users.password, confirmPassword: users.confirmPassword};
+
+  try {
+    setLoading: true;
+    
+    const response = await axios.post("https://api.accountsgoal.com/api/register", credentials, {
+      headers: {
+        "Content-Type": "application/json; charset= UTF-8",
+        "Access-Control-Allow-Origin": "*",
+      }
+    })
+
+    if(response) {
+      setSucess("OTP Sent to your Mail")
+      localStorage.setItem("usersparameter", JSON.stringify(response?.data?.data))
+      console.log(response.data.data);
+     setTimeout(() => {
+        Navigate("/otp-verification")
+      }, 1000);
+
+    }
+    setLoading(false)
+    
+  } catch (error) {
+    setError(error.response?.data?.msg)
+    setLoading(false);
+    console.log(error);
+    
+  }
+  
+
+
+}
+
+
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 h-screen '>
       <div className='h-full w-full overflow-y-auto -mt-12'>
         <div className='md:w-44 w-52 mx-auto md:mx-0'>
         <img src={Logo} alt='logo' className='w-full h-full'/>
         </div>
-        <form className='px-8 md:px-10 lg:px-20 -mt-7 '>
+        <form onSubmit={handleSubmit}   className='px-8 md:px-10 lg:px-20 -mt-7 '>
         <div>
           <h2 className='font-inter font-bold text-center -mt-16 md:-mt-0 md:text-left text-xl'>Create Account</h2>
           <p className='font-inter text-[#5C5C5C] text-[12px] md:text-[14px] text-center md:text-left'> it's your first step towards streamlined management and enhanced productivity.</p>
         </div>
 
+        {error && (<p className='bg-red-500 text-center  text-white py-3 w-full mt-5 '>{error}</p>)}
+        {sucess && (<p className='bg-green-500 text-center text-white py-3 w-full mt-5 '>{error}</p>)}
+        
+
         <div className='flex flex-col gap-y-1 mt-14 md:mt-4'>
           <label className='font-inter' htmlFor="email">Email <span className='text-[#ed0202]'>*</span></label>
-          <input type="text" placeholder='example@company.com' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
+          <input type="text" placeholder='example@company.com' onChange={handleChange} value={users.email} name="email" className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
         </div>
 
         <div className='flex flex-col gap-y-1 mt-4'>
           <label className='font-inter' htmlFor="fullname">Full Name <span className='text-[#ed0202]'>*</span></label>
-          <input type="text" placeholder='full name' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
+          <input type="text" placeholder='full name' onChange={handleChange} value={users.fullName} name="fullName" className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
         </div>
 
         <div className='flex flex-col gap-y-1 mt-4'>
           <label className='font-inter' htmlFor="mobile">Phone Number </label>
-          <input type="text" placeholder='+1 (123) 456-7890' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
+          <input type="text" placeholder='+1 (123) 456-7890' onChange={handleChange} value={users.mobile} name="mobile"  className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
         </div>
 
         <div className='flex flex-col gap-y-1 mt-4'>
           <label className='font-inter' htmlFor="password">Password <span className='text-[#ed0202]'>*</span></label>
-          <input type="password" placeholder='********' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
+          <input type="password" placeholder='********'  onChange={handleChange} value={users.password} name="password"  className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
         </div>
 
         <div className='flex flex-col gap-y-1 mt-4'>
           <label className='font-inter' htmlFor="confirmpassword">Confirm Password <span className='text-[#ed0202]'>*</span></label>
-          <input type="password" placeholder='********' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
+          <input type="password" placeholder='********' onChange={handleChange} value={users.confirmPassword} name="confirmPassword"  className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
         </div>
 
-          <button className='bg-[#4169e1] w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6'>Signup</button>
+          <button type='submit' className='bg-[#4169e1] w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6'>Signup</button>
           <p className='font-inter text-[14px] flex items-center gap-x-1 text-center justify-center mt-1'>Already have an account? <Link to={'/signin'} className='text-[#4169e1] font-semibold italic text-[14px] underline'>Login</Link></p>
         </form>
 
