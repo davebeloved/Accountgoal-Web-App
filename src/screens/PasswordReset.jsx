@@ -1,35 +1,108 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../assets/logopic.png';
 import CircleImg from '../assets/circleimg.png';
 import Globe from '../assets/globe.png';
+import Loading from '../components/Loading';
+import { useStateContext } from '../context/contextProvider';
+import { useDispatch, useSelector } from 'react-redux';
+import { useVerifyResetPasswordMutation } from '../store/authApi';
+import axios from 'axios';
 
 const PasswordReset = () => {
+  const [data, setData] = useState([]);
+  const [emptyField, setEmptyField] = useState(null)
+  const [succeed, setSucceed] = useState(null)
+  const [err, setErr] = useState(null)
+  const [newPwd, setNewPwd] = useState('')
+  const [confirmNewPwd, setConfirmNewPwd] = useState('')
+  // const [isLoading, setIsLoading] = useState(false)
+  const [otp, setOtp] = useState('')
+// const [isError, setIsError] = useState(null)
+  const {formData, setFormData} = useStateContext();
+
+  useEffect(() => {
+      if(localStorage.getItem("usersparameter")){
+        setData(JSON.parse(localStorage.getItem("usersparameter")))
+      }
+  }, []);
+
+
+
+    const [verifyResetPassword, { isLoading, isError }] = useVerifyResetPasswordMutation();
+    const { usersInfo } = useSelector((state) => state.auth);
+  
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      if (!newPwd || !confirmNewPwd) {
+        setEmptyField("Please fill all fields");
+        // console.log("please fill all fields");
+        return;
+      }
+  
+      try {
+        const res = await verifyResetPassword({ otp: formData.otpValues, password: newPwd, confirmPassword: confirmNewPwd, userId: data.userId }).unwrap();
+
+        if (res) {
+          setSucceed("Password Reset Successfully");
+          localStorage.removeItem('usersparameter')
+          navigate('/password-changed')
+        }
+
+      } catch (error) {
+        console.log(error);
+        // console.log(error.data.msg);
+        setErr(error?.data?.msg);
+      }
+    };
+
+    console.log(formData.otpValues);
+    console.log(newPwd);
   return (
     <div className='grid grid-cols-1 md:grid-cols-2 md:h-screen '>
     <div className='h-full w-full md:overflow-y-auto -mt-12'>
       <div className='md:w-44 w-52 mx-auto md:mx-0'>
         <img src={Logo} alt='logo' className='w-full h-full'/>
         </div>
-        <form className='px-8 md:px-10 lg:px-20  '>
+        <form onSubmit={handleSubmit} className='px-8 md:px-10 lg:px-20  '>
         <div>
         <h2 className='font-inter font-bold text-center -mt-16 md:-mt-0 md:text-left text-xl'>Password Reset</h2>
         <p className='font-inter text-[#5C5C5C] text-[12px] md:text-[14px] text-center md:text-left'>We’ve sent an otp to the mail you provided us</p>
         </div>
+        
+        <input type='hidden' onChange={(e) => setOtp(e.target.value)} value={formData.otpValues} name='otp' />
+
+        <input type='hidden' onChange={(e) => setUserId(e.target.value)} value={data.userId} name='userId' />
+        {isError && (
+          <p className="bg-[#B20000] mt-3 text-white font-dmSans py-2 px-3">{err || 'Please check your internet connection and try again'}</p>
+        )}
+        {emptyField && (
+          <p className="bg-[#B20000] mt-3 text-white font-dmSans py-2 px-3">
+            {emptyField}
+          </p>
+        )}
+        {succeed && (
+          <p className="bg-[#36A74A] mt-3 text-white font-dmSans py-2 px-3">
+            {succeed}
+          </p>
+        )}{" "}
 
         <div className='flex flex-col gap-y-1 mt-7'>
           <label className='font-inter' htmlFor="password">New Password <span className='text-[#ed0202]'>*</span></label>
-          <input type="password" placeholder='********' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
+          <input onChange={(e)=>setNewPwd(e.target.value)} value={newPwd} name='newPwd' type="password" placeholder='********' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
         </div>
 
         <div className='flex flex-col gap-y-1 mt-7'>
           <label className='font-inter' htmlFor="password">Confirm Password <span className='text-[#ed0202]'>*</span></label>
-          <input type="password" placeholder='********' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
+          <input onChange={(e)=> setConfirmNewPwd(e.target.value)} value={confirmNewPwd} name='confirmNewPwd' type="password" placeholder='********' className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
         </div>
 
 
 
-          <button className='bg-[#4169e1] w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6'>Reset Password</button>
+        <button type='submit' className={`${isLoading ? 'bg-blue-200 flex items-center justify-center w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6' : 'bg-[#4169e1] w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6'}`}>{isLoading ? <Loading /> : 'Reset Password'}</button>
   
         </form>
 

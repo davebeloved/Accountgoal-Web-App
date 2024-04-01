@@ -5,6 +5,7 @@ import CircleImg from '../assets/circleimg.png';
 import Globe from '../assets/globe.png';
 import axios from 'axios';
 import { useState } from 'react';
+import Loading from '../components/Loading';
 
 
 const Signup = () => {
@@ -43,7 +44,7 @@ const handleSubmit =  async (e) => {
   let credentials= {email: users.email, fullName: users.fullName, mobile: users.mobile, password:users.password, confirmPassword: users.confirmPassword};
 
   try {
-    setLoading: true;
+    setLoading(true);
     
     const response = await axios.post("https://api.accountsgoal.com/api/register", credentials, {
       headers: {
@@ -58,7 +59,7 @@ const handleSubmit =  async (e) => {
       console.log(response.data.data);
      setTimeout(() => {
         Navigate("/otp-verification")
-      }, 1000);
+      }, 4000);
 
     }
     setLoading(false)
@@ -88,7 +89,7 @@ const handleSubmit =  async (e) => {
         </div>
 
         {error && (<p className='bg-red-500 text-center  text-white py-3 w-full mt-5 '>{error}</p>)}
-        {sucess && (<p className='bg-green-500 text-center text-white py-3 w-full mt-5 '>{error}</p>)}
+        {sucess && (<p className='bg-green-500 text-center text-white py-3 w-full mt-5 '>{sucess}</p>)}
         
 
         <div className='flex flex-col gap-y-1 mt-14 md:mt-4'>
@@ -116,7 +117,7 @@ const handleSubmit =  async (e) => {
           <input type="password" placeholder='********' onChange={handleChange} value={users.confirmPassword} name="confirmPassword"  className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
         </div>
 
-          <button type='submit' className='bg-[#4169e1] w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6'>Signup</button>
+          <button type='submit' className={`${loading ? 'bg-blue-200 flex items-center justify-center w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6' : 'bg-[#4169e1] w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6'}`}>{loading ? <Loading /> : 'Signup'}</button>
           <p className='font-inter text-[14px] flex items-center gap-x-1 text-center justify-center mt-1'>Already have an account? <Link to={'/signin'} className='text-[#4169e1] font-semibold italic text-[14px] underline'>Login</Link></p>
         </form>
 
