@@ -20,7 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
-        <Route path="/signup-successful" element={<SuccessRegister />} />
+        <Route path="/sucess-register" element={<SuccessRegister />} />
         <Route path="/otp-verification" element={<OtpVerification />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/otp-password-reset" element={<VerifyPasswordReset />} />

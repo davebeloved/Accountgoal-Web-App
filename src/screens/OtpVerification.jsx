@@ -61,7 +61,7 @@ const handleSubmit =  async (e) => {
       setSucess("OTP Veified Succesfully")
       console.log(response);
       setTimeout(() => {
-        navigate("/signup-succesful")
+        navigate("/sucess-register")
       }, 2000);
 
     }
