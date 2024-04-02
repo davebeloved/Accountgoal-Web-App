@@ -13,12 +13,7 @@ import SuccessRegister from "./screens/SuccessRegister";
 
 
 function App() {
-  const [data, setData] = useState([])
-  useEffect(() => {
-      if(localStorage.getItem("usersparameter")){
-        setData(JSON.parse(localStorage.getItem("usersparameter")))
-      }
-  }, [])
+
 
   return (
     <Router>
