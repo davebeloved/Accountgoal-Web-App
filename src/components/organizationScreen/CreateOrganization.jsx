@@ -1,22 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logopic from '../image/logopic.png';
+//import logopic from '../image/logopic.png';
 import orgimage from '../image/orgimage.png';
 
 const CreateOrganization = () => {
   return (
     <div className=' flex '>
       <div className='w-1/2 bg-white flex flex-col justify-start items-start '>
-        <div className="pl-4 pt-4">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+      <div className="pl-4 pt-4 flex flex-row justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
     <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
    
  </svg> 
- <h1>Organization</h1>
- <div class="flex space-x-4 text-blue-500 ..."></div>
-
-          <img src={logopic} alt="accounts goal image" className='w-64 h-64 text-blue-500' />
-        </div>
+ <h1 className='text-2xl font-bold text-center' >Organization</h1>
+ </div>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
         <div className="text-right px-32">
           <h1 className='text-3xl text-bold text-left'>Create Organization</h1>
           <p className="text-justify w-full whitespace-normal">

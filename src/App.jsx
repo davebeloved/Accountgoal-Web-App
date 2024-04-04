@@ -10,6 +10,7 @@ import CreateOrganization from "./components/organizationScreen/CreateOrganizati
 import Signin from "./screens/Signin";
 import SuccessRegister from "./screens/SuccessRegister";
 import InviteOthers from "./components/organizationScreen/InviteOthers";
+import InvitationSent from "./components/organizationScreen/InvitationSent";
 
 
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/password-changed" element={<PasswordChanged/>} />
         <Route path="/create-organization" element={<CreateOrganization/>} />
         <Route path="/invite-others" element={<InviteOthers/>} />
+        <Route path = "invitation-sent" element= {<InvitationSent/>}/>
       </Routes>
     </Router>
  );
