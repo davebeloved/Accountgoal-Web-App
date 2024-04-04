@@ -6,9 +6,10 @@ import ForgotPassword from "./screens/ForgotPassword";
 import VerifyPasswordReset from "./screens/VerifyPasswordReset";
 import PasswordReset from "./screens/PasswordReset";
 import PasswordChanged from "./screens/PasswordChanged";
-import CreateOrganization from "./components/organization/CreateOrganization";
+import CreateOrganization from "./components/organizationScreen/CreateOrganization";
 import Signin from "./screens/Signin";
 import SuccessRegister from "./screens/SuccessRegister";
+import InviteOthers from "./components/organizationScreen/InviteOthers";
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/password-reset" element={<PasswordReset />} />
         <Route path="/password-changed" element={<PasswordChanged/>} />
         <Route path="/create-organization" element={<CreateOrganization/>} />
+        <Route path="/invite-others" element={<InviteOthers/>} />
       </Routes>
     </Router>
  );
