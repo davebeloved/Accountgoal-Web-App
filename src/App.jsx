@@ -11,6 +11,7 @@ import Signin from "./screens/Signin";
 import SuccessRegister from "./screens/SuccessRegister";
 import InviteOthers from "./components/organizationScreen/InviteOthers";
 import InvitationSent from "./components/organizationScreen/InvitationSent";
+import OrganizationSuccess from "./components/organizationScreen/OrganizationSuccess";
 
 
 
@@ -31,6 +32,8 @@ function App() {
         <Route path="/create-organization" element={<CreateOrganization/>} />
         <Route path="/invite-others" element={<InviteOthers/>} />
         <Route path = "invitation-sent" element= {<InvitationSent/>}/>
+        <Route path = "organization-success" element= {<OrganizationSuccess/>}/>
+
       </Routes>
     </Router>
  );
