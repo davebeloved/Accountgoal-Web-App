@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import Signup from "./screens/Signup";
 import OtpVerification from "./screens/OtpVerification";
 import ForgotPassword from "./screens/ForgotPassword";
@@ -13,16 +13,23 @@ import InviteOthers from "./components/organizationScreen/InviteOthers";
 import InvitationSent from "./components/organizationScreen/InvitationSent";
 import OrganizationSuccess from "./components/organizationScreen/OrganizationSuccess";
 import Home from "./components/homeScreen/Home";
+import { useSelector } from "react-redux";
 
 
 
-function App() {
-
+const App = ()=> {
+const {userInfo} = useSelector(state=>state.auth);
+const navigate = useNavigate();
+useEffect(()=>{
+  if(!userInfo?.token){
+    navigate('/signin')
+  }
+}, [])
 
   return (
-    <Router>
       <Routes>
-        <Route path="/" element={<Signup />} />
+        <Route path = "/" element= {<Home/>}/>
+        <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/sucess-register" element={<SuccessRegister />} />
         <Route path="/otp-verification" element={<OtpVerification />} />
@@ -34,11 +41,9 @@ function App() {
         <Route path="/invite-others" element={<InviteOthers/>} />
         <Route path = "invitation-sent" element= {<InvitationSent/>}/>
         <Route path = "organization-success" element= {<OrganizationSuccess/>}/>
-        <Route path = "home" element= {<Home/>}/>
         
 
       </Routes>
-    </Router>
  );
 }
 
