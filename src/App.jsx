@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux';
 import Signup from "./screens/Signup";
 import OtpVerification from "./screens/OtpVerification";
 import ForgotPassword from "./screens/ForgotPassword";
@@ -13,6 +14,8 @@ import InviteOthers from "./components/organizationScreen/InviteOthers";
 import InvitationSent from "./components/organizationScreen/InvitationSent";
 import OrganizationSuccess from "./components/organizationScreen/OrganizationSuccess";
 import Home from "./components/homeScreen/Home";
+import Goals from "./components/homeScreen/Goals";
+
 
 
 
@@ -27,7 +30,7 @@ useEffect(()=>{
 
   return (
       <Routes>
-        <Route path = "/" element= {<Home/>}/>
+        <Route path = "/" element= {<Home/>}/> 
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
         <Route path="/sucess-register" element={<SuccessRegister />} />
@@ -41,6 +44,7 @@ useEffect(()=>{
         <Route path = "invitation-sent" element= {<InvitationSent/>}/>
         <Route path = "organization-success" element= {<OrganizationSuccess/>}/>
         <Route path = "home" element= {<Home/>}/>
+        <Route path = "goals" element= {<Goals/>}/>
         
 
       </Routes>
@@ -48,3 +52,4 @@ useEffect(()=>{
 }
 
 export default App;
+
