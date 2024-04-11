@@ -61,7 +61,8 @@ const Goals = () => {
         </div>
       </div>
 
-      <div className="flex-grow">
+      <div className="grid grid-cols-2">
+      <div className="">
         <img
           src={MapScreen}
           alt="map screen image"
@@ -170,6 +171,8 @@ const Goals = () => {
             Create Goal
           </button>
         </div>
+        
+      </div>
       </div>
     </div>
   );

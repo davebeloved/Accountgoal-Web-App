@@ -20,14 +20,15 @@ import Goals from "./components/homeScreen/Goals";
 
 
 const App = ()=> {
-const {userInfo} = useSelector(state=>state.auth);
+const {usersInfo} = useSelector(state=>state.auth);
 const navigate = useNavigate();
 useEffect(()=>{
-  if(!userInfo?.token){
+  if(!usersInfo?.token){
     navigate('/signin')
+    
   }
 }, [])
-
+//console.log(usersInfo)
   return (
       <Routes>
         <Route path = "/" element= {<Home/>}/> 
