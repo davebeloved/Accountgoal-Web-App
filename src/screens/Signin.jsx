@@ -33,6 +33,10 @@ const [err, setErr] = useState(null)
       dispatch(setCredentials({ ...res }));
       if (res) {
         setSucceed("Login Successfully, Redirecting to Home Page");
+        setTimeout(() => {
+          navigate('/')
+        }, 3000)
+        
       }
     } catch (error) {
       console.log(error.data.msg);
@@ -86,7 +90,7 @@ const [err, setErr] = useState(null)
         </div>
 
         <button type='submit' className={`${isLoading ? 'bg-blue-200 flex items-center justify-center w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6' : 'bg-[#4169e1] w-full py-2 rounded-2xl text-white font-inter font-semibold mt-6'}`}>{isLoading ? <Loading /> : 'Signin'}</button>
-          <p className='font-inter text-[14px] flex items-center gap-x-1 text-center justify-center mt-1'>Dont have an account? <Link to={'/'} className='text-[#4169e1] font-semibold italic text-[14px] underline'>Signup</Link></p>
+          <p className='font-inter text-[14px] flex items-center gap-x-1 text-center justify-center mt-1'>Dont have an account? <Link to={'/signup'} className='text-[#4169e1] font-semibold italic text-[14px] underline'>Signup</Link></p>
         </form>
 
       </div>
