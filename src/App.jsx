@@ -13,6 +13,7 @@ import InviteOthers from "./components/organizationScreen/InviteOthers";
 import InvitationSent from "./components/organizationScreen/InvitationSent";
 import OrganizationSuccess from "./components/organizationScreen/OrganizationSuccess";
 import Home from "./components/homeScreen/Home";
+import Goals from "./components/homeScreen/Goals";
 
 
 
@@ -35,6 +36,7 @@ function App() {
         <Route path = "invitation-sent" element= {<InvitationSent/>}/>
         <Route path = "organization-success" element= {<OrganizationSuccess/>}/>
         <Route path = "home" element= {<Home/>}/>
+        <Route path = "goals" element ={<Goals/>}/>
         
 
       </Routes>
