@@ -14,10 +14,14 @@ const userSlice = createSlice({
       state.usersInfo = action.payload;
       localStorage.setItem("usersInfo", JSON.stringify(action.payload));
     },
+    logoutUser: (state, action) => {
+      state.usersInfo = null;
+      localStorage.clear();
+    },
 
   },
 });
 
-export const { setCredentials } = userSlice.actions;
+export const { setCredentials, logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;
