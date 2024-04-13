@@ -2,15 +2,11 @@ import React, { useState } from "react";
 import MapScreen from "../../assets/map.png";
 import { CiCalendarDate } from "react-icons/ci";
 import { MdOutlineCancel } from "react-icons/md";
+import goal from "../../assets/goal.svg"
 
-const Goals = () => {
-  const [checked, setChecked] = useState(false);
-
-  const handleChange = () => {
-    setChecked(!checked);
-
-    //console.log("Goals component is rendering");
-  };
+const CreateNewGoal = () => {
+  
+ 
 
   return (
     <div className="flex h-screen">
@@ -55,53 +51,13 @@ const Goals = () => {
             </div>
           </div>
 
-          <div className="px-10 mt-16">
-          <div className="flex flex-col gap-y-1 mt-14 md:mt-4">
-            <label className="font-inter text-[14px]" htmlFor="start date">
-              Goal Name <span className="text-[#ed0202]">*</span>
-            </label>
-            <input
-              type="text"
-              placeholder=""
-              name="email"
-              className="border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-[461px] h-[54px]"
-            />
-          </div>
-          <div className="flex flex-col gap-y-1 mt-14 md:mt-10">
-            <label className="font-inter text-[14px]" htmlFor="start date">
-              End Date<span className="text-[#ed0202]">*</span>
-            </label>
-            <input
-              type="date"
-              placeholder=""
-              name="email"
-              className="border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-[461px] h-[54px]"
-            />
-          </div>
-          </div>
-    
-
-          <div className="flex flex-col gap-y-1 mt-14 md:mt-10 px-5">
-            <h1 className="text-3xl font-bold ">
-              Sub Goals
-            </h1>
-            <div className="flex items-center gap-x-4 mt-3 ml-12">
-              <div className="h-7 w-7 overflow-hidden border-2 border-black cursor-pointer">
-              <input type="checkbox" className="bg-transparent h-full w-full"/>
-              </div>
-              <h3 className="font-inter text-[20px] text-[#C5C5C5]">List item</h3>
-            </div>
-          </div>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
+          <img src={goal} alt="goal image"/>
        
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-40 rounded-full focus:outline-none focus:shadow-outline mt-20 mx-auto block"
             type="button"
           >
-            Create Goal
+            Create New Goal
           </button>
         </div>
         
@@ -111,4 +67,4 @@ const Goals = () => {
   );
 };
 
-export default Goals;
+export default CreateNewGoal;

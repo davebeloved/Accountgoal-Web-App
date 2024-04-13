@@ -7,16 +7,19 @@ import ForgotPassword from "./screens/ForgotPassword";
 import VerifyPasswordReset from "./screens/VerifyPasswordReset";
 import PasswordReset from "./screens/PasswordReset";
 import PasswordChanged from "./screens/PasswordChanged";
-import CreateOrganization from "./components/organizationScreen/CreateOrganization";
+import CreateOrganization from "./components/organization/CreateOrganization";
 import Signin from "./screens/Signin";
 import SuccessRegister from "./screens/SuccessRegister";
-import InviteOthers from "./components/organizationScreen/InviteOthers";
-import InvitationSent from "./components/organizationScreen/InvitationSent";
-import OrganizationSuccess from "./components/organizationScreen/OrganizationSuccess";
-import Home from "./components/homeScreen/Home";
-import Goals from "./components/homeScreen/Goals";
+import InviteOthers from "./components/organization/InviteOthers";
+import InvitationSent from "./components/organization/InvitationSent";
+import OrganizationSuccess from "./components/organization/OrganizationSuccess";
+import Home from "./screens/Home";
+import Goals from "./screens/Goals";
 import Layout from "./components/Layout";
-import TodoList from "./components/homeScreen/TodoList";
+import TodoList from "./screens/TodoList";
+import Calender from "./screens/Calender";
+import CalenderEvent from "./components/calender/CalenderEvent";
+import CreateNewGoal from "./components/goals/CreateNewGoal";
 
 
 
@@ -37,6 +40,11 @@ useEffect(()=>{
         <Route index element={<Home />} />
         <Route path ="/goals" element={<Goals />} />
         <Route path ="/todo-list" element={<TodoList />} />
+        <Route path ="/calender" element={<Calender />} />
+        <Route path ="/calender/event" element={<CalenderEvent />} />
+        <Route path ="/create-new-goal" element={<CreateNewGoal />} />
+
+        
         </Route>
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
@@ -49,7 +57,8 @@ useEffect(()=>{
         <Route path="/create-organization" element={<CreateOrganization/>} />
         <Route path="/invite-others" element={<InviteOthers/>} />
         <Route path = "invitation-sent" element= {<InvitationSent/>}/>
-        <Route path = "organization-success" element= {<OrganizationSuccess/>}/>
+        <Route path = "organization-success" element= {<OrganizationSuccess/>}/>\
+        
        
         {/* <Route path = "home" element= {<Home/>}/> */}
         

@@ -13,11 +13,12 @@ export const sideBarLinks = [
     },
     {
         label: 'Calendar',
-        path: '/calender',
+        path: '/calender' ,
         icon: <LuCalendarDays className="w-7 h-7" />
 
 
     },
+  
     {
         label: 'Todo List',
         path: '/todo-list',

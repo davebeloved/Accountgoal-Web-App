@@ -5,8 +5,8 @@ import { LuListChecks } from "react-icons/lu";
 import { GoGoal } from "react-icons/go";
 import { BiSupport } from "react-icons/bi";
 import { HiOutlineLogout } from "react-icons/hi";
-import Layer_1 from "../image/Layer_1.svg";
-import MapScreen from "../../assets/map.png";
+//import Layer_1 from "../../image/Layer_1.svg";
+import MapScreen from "./../assets/map.png";
 
 const Home = () => {
   return (
