@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import MapScreen from "../../assets/map.png";
 import { CiCalendarDate } from "react-icons/ci";
 import { MdOutlineCancel } from "react-icons/md";
-import goal from "../../assets/goal.svg"
+import goal from "../../assets/goal.svg";
 
 const CreateNewGoal = () => {
-  
- 
-
   return (
     <div className="flex h-screen">
       <div className="">
@@ -17,15 +14,10 @@ const CreateNewGoal = () => {
           className="w-full h-full object-cover"
         />
       </div>
-
       <div className="p-">
         <div className="justify-items-start p-4">
           <div className="flex justify-between w-full">
-            {" "}
-            {/* Adjusted to use flex and justify-between */}
             <div className="flex gap-x-10 items-center w-full">
-              {" "}
-              {/* Adjusted to use flex and justify-start */}
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -50,19 +42,29 @@ const CreateNewGoal = () => {
               </div>
             </div>
           </div>
-
-          <img src={goal} alt="goal image"/>
-       
+          <div className=" justify-center items-center mt-56  text-center">
+            <div className="flex flex-col items-center">
+              <img src={goal} alt="goal image" className="w-20 h-20" />
+              <p className="text-gray-500">No goal is set yet</p>
+            </div>
+          </div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-40 rounded-full focus:outline-none focus:shadow-outline mt-20 mx-auto block"
-            type="button"
-          >
-            Create New Goal
-          </button>
+  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 md:px-40 rounded-full whitespace-nowrap focus:outline-none focus:shadow-outline mt-20 mx-auto block"
+  type="button"
+>
+  + Create New Goal
+</button>
+
+
         </div>
-        
       </div>
-      
     </div>
   );
 };
