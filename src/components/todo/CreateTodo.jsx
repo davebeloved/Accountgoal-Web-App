@@ -3,7 +3,7 @@ import MapScreen from "../../assets/map.png";
 import { CiCalendarDate } from "react-icons/ci";
 import { MdOutlineCancel } from "react-icons/md";
 import todo from "../../assets/todo.svg";
-import TodoStatusBar from "./TodoStatusBar";
+//import TodoStatusBar from "./TodoStatusBar";
 
 const CreateTodo = () => {
 

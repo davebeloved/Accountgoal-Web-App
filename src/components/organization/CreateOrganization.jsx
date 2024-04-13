@@ -12,14 +12,14 @@ const CreateOrganization = () => {
     <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
    
  </svg> 
- <h1 className='text-2xl font-bold text-center' >Organization</h1>
+ <h1 className=' text-center text-3xl font-bold font-inter' >Organization</h1>
  </div>
  <br/>
  <br/>
  <br/>
  <br/>
         <div className="text-right px-32">
-          <h1 className='text-3xl text-bold text-left'>Create Organization</h1>
+          <h1 className='text-3xl text-bold text-left font-bold font-inter'>Create Organization</h1>
           <p className="text-justify w-full whitespace-normal">
             It's your first step towards streamlined management and enhanced productivity
           </p>
