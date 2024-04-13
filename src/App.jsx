@@ -16,6 +16,7 @@ import OrganizationSuccess from "./components/organizationScreen/OrganizationSuc
 import Home from "./components/homeScreen/Home";
 import Goals from "./components/homeScreen/Goals";
 import Layout from "./components/Layout";
+import TodoList from "./components/homeScreen/TodoList";
 
 
 
@@ -35,6 +36,7 @@ useEffect(()=>{
         <Route path="/" element={<Layout />} >
         <Route index element={<Home />} />
         <Route path ="/goals" element={<Goals />} />
+        <Route path ="/todo-list" element={<TodoList />} />
         </Route>
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
@@ -48,6 +50,7 @@ useEffect(()=>{
         <Route path="/invite-others" element={<InviteOthers/>} />
         <Route path = "invitation-sent" element= {<InvitationSent/>}/>
         <Route path = "organization-success" element= {<OrganizationSuccess/>}/>
+       
         {/* <Route path = "home" element= {<Home/>}/> */}
         
 

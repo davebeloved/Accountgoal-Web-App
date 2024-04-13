@@ -69,10 +69,10 @@ const Goals = () => {
           </div>
           <div className="flex flex-col gap-y-1 mt-14 md:mt-10">
             <label className="font-inter text-[14px]" htmlFor="start date">
-              Goal Name <span className="text-[#ed0202]">*</span>
+              End Date<span className="text-[#ed0202]">*</span>
             </label>
             <input
-              type="text"
+              type="date"
               placeholder=""
               name="email"
               className="border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-[461px] h-[54px]"
@@ -92,6 +92,10 @@ const Goals = () => {
               <h3 className="font-inter text-[20px] text-[#C5C5C5]">List item</h3>
             </div>
           </div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
        
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-40 rounded-full focus:outline-none focus:shadow-outline mt-20 mx-auto block"
