@@ -20,6 +20,7 @@ import TodoList from "./screens/TodoList";
 import Calender from "./screens/Calender";
 import CalenderEvent from "./components/calender/CalenderEvent";
 import CreateNewGoal from "./components/goals/CreateNewGoal";
+import CreateTodo from "./components/todo/CreateTodo";
 
 
 
@@ -41,8 +42,10 @@ useEffect(()=>{
         <Route path ="/goals" element={<Goals />} />
         <Route path ="/todo-list" element={<TodoList />} />
         <Route path ="/calender" element={<Calender />} />
-        <Route path ="/calender/event" element={<CalenderEvent />} />
+        <Route path ="/calender-event" element={<CalenderEvent />} />
         <Route path ="/create-new-goal" element={<CreateNewGoal />} />
+        <Route path ="/create-todo" element={<CreateTodo />} />
+        
 
         
         </Route>
