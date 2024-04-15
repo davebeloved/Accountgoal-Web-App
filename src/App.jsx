@@ -21,6 +21,7 @@ import Calender from "./screens/Calender";
 import CalenderEvent from "./components/calender/CalenderEvent";
 import CreateNewGoal from "./components/goals/CreateNewGoal";
 import CreateTodo from "./components/todo/CreateTodo";
+import OrganizationProfile from "./components/organization/OrganizationProfile";
 
 
 
@@ -60,7 +61,8 @@ useEffect(()=>{
         <Route path="/create-organization" element={<CreateOrganization/>} />
         <Route path="/invite-others" element={<InviteOthers/>} />
         <Route path = "invitation-sent" element= {<InvitationSent/>}/>
-        <Route path = "organization-success" element= {<OrganizationSuccess/>}/>\
+        <Route path = "organization-success" element= {<OrganizationSuccess/>}/>
+        <Route path = "organization-profile" element= {<OrganizationProfile/>}/>
         
        
         {/* <Route path = "home" element= {<Home/>}/> */}
