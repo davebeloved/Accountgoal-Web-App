@@ -23,6 +23,8 @@ import CreateNewGoal from "./components/goals/CreateNewGoal";
 import CreateTodo from "./components/todo/CreateTodo";
 import OrganizationProfile from "./components/organization/OrganizationProfile";
 
+import GoalsPercent from "./components/goals/GoalsCreated";
+
 
 
 
@@ -46,6 +48,7 @@ useEffect(()=>{
         <Route path ="/calender-event" element={<CalenderEvent />} />
         <Route path ="/create-new-goal" element={<CreateNewGoal />} />
         <Route path ="/create-todo" element={<CreateTodo />} />
+        <Route path ="/goals-percent" element={<GoalsPercent/>} />
         
 
         
@@ -63,6 +66,7 @@ useEffect(()=>{
         <Route path = "invitation-sent" element= {<InvitationSent/>}/>
         <Route path = "organization-success" element= {<OrganizationSuccess/>}/>
         <Route path = "organization-profile" element= {<OrganizationProfile/>}/>
+
         
        
         {/* <Route path = "home" element= {<Home/>}/> */}
