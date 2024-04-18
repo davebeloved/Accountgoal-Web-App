@@ -67,6 +67,18 @@ const Goals = () => {
               className="border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-[461px] h-[54px]"
             />
           </div>
+
+          <div className="flex flex-col gap-y-1 mt-14 md:mt-10">
+            <label className="font-inter text-[14px]" htmlFor="start date">
+              Attach Client<span className="text-[#ed0202]">*</span>
+            </label>
+              <select className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="pirorityType">
+               <option value="">Select Client </option> 
+                <option value="basic">Israel@accountsgoal.com</option>
+                <option value="standard">Israel@gloriation.com</option>
+                <option value="advanced">Davidson@gloriation.com</option>
+              </select>
+          </div>
           <div className="flex flex-col gap-y-1 mt-14 md:mt-10">
             <label className="font-inter text-[14px]" htmlFor="start date">
               End Date<span className="text-[#ed0202]">*</span>

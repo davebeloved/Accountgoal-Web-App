@@ -75,7 +75,7 @@ const CreateTodo = () => {
   className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-8 md:px-40 rounded-full whitespace-nowrap focus:outline-none focus:shadow-outline mt-20 mx-auto block"
   type="button"
 >
-  + Create New Goal
+  + Create Todo
 </button>
 
 
