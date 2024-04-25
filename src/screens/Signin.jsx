@@ -53,7 +53,7 @@ const [err, setErr] = useState(null)
         <form onSubmit={handleSubmit} className='px-8 md:px-10 lg:px-20 -mt-7 '>
         <div>
         <h2 className='font-inter font-bold text-center -mt-16 md:-mt-0 md:text-left text-xl'>Welcome Back</h2>
-        <p className='font-inter text-[#5C5C5C] text-[12px] md:text-[14px] text-center md:text-left'> Let's get you starte from where you stopped.</p>
+        <p className='font-inter text-[#5C5C5C] text-[12px] md:text-[14px] text-center md:text-left'> Let's get you started from where you stopped.</p>
         </div>
 
         {isError && (
