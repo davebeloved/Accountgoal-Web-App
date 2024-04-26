@@ -24,6 +24,14 @@ const authApi = apiSlice.injectEndpoints({
       }),
     }),
 
+    createOrganization: builder.mutation({
+      query: (data) => ({
+        url: "/api/create_organization",
+        method: "POST",
+        body: data,
+      }),
+    }),
+
     
   }),
 });
@@ -32,5 +40,6 @@ export const {
   useLoginMutation,
   useResetPasswordMutation,
   useVerifyResetPasswordMutation,
+  useCreateOrganizationMutation,
 
 } = authApi;

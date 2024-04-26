@@ -1,97 +1,154 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import logopic from '../image/logopic.png';
 import orgimage from '../image/orgimage.png';
 import { AiOutlinePlusCircle } from "react-icons/ai";
-
+import { CiCirclePlus } from "react-icons/ci";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { useCreateOrganizationMutation } from '../../store/authApi';
+import { useDispatch } from 'react-redux';
+import { setCredentials } from '../../store/userSlice';
 const InviteOthers = () => {
+  const [inputFields, setInputFields] = useState([]);
+  const [email, setEmail] = useState('')
+const [getCompanyData, setGetCompanyData] = useState()
+const [emptyField, setEmptyField] = useState(null)
+const [err, setErr] = useState(null)
+  const [createOrganization, { isLoading, isError }] = useCreateOrganizationMutation();
+  const [succeed, setSucceed] = useState(null)
+
+  
+  const addInputField = () => {
+    setInputFields([...inputFields, { id: Math.random() }]);
+  };
+  
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(()=>{
+    if(localStorage.getItem('companyDetails')){
+      setGetCompanyData(JSON.parse(localStorage.getItem('companyDetails')))
+    }
+  }, []);
+
+  const handleChange = (id, value) => {
+    setInputFields(inputFields.map(input =>
+      input.id === id ? { ...input, value } : input
+    ));
+  };
+
+  const handleSubmit1 = () => {
+    const inputData = inputFields.map(input => input.value);
+    console.log(inputData);
+
+  };
+
+
+
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      // if (!companyName || !companySize || !companyType || !members) {
+      //   setEmptyField("Please fill all fields");
+      //   // console.log("please fill all fields");
+      //   return;
+      // }
+
+      const inputData = inputFields.map(input => input.value);
+    console.log(inputData);
+    const credentials = {
+      companyName: getCompanyData && getCompanyData.companyName,
+      companySize: getCompanyData && getCompanyData.companySize,
+      companyType: getCompanyData && getCompanyData.companyType,
+      members: [...inputData, email]
+    }
+    console.log('all', credentials);
+  
+      try {
+        const res = await createOrganization(credentials).unwrap();
+        dispatch(setCredentials({ ...res }));
+        if (res) {
+          setSucceed("Organization created successfully");
+          console.log('success');
+          // setTimeout(() => {
+          //   navigate('/')
+          // }, 3000)
+          
+        }
+      } catch (error) {
+        console.log(error.data.msg);
+        // console.log(error.data.msg);
+        setErr(error?.data?.msg);
+      }
+    };
+    // console.log(getCompanyData && getCompanyData.companyName);
   return (
-    <div className=' flex '>
-      <div className='w-1/2 bg-white flex flex-col justify-start items-start '>
-        <div className="pl-4 pt-4 flex flex-row justify-center">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-9 h-9">
-    <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
-   
- </svg> 
- <h1 className='text-2xl font-bold text-center' >Organization</h1>
+    <div className=' flex h-screen'>
+    <div className=' bg-white flex flex-col gap-y-10 py-7 justify-start items-start overflow-y-auto w-full h-full'>
+    <div className="pl-4 pt-4 flex flex-row gap-x-5 justify-center">
+      <svg onClick={()=>navigate('/create-organization')} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8 text-black cursor-pointer">
+  <path fillRule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clipRule="evenodd" />
+ 
+</svg> 
+<h1 className=' text-center text-black text-2xl font-bold font-inter' >Organization</h1>
+</div>
 
+      <div className="text- px-16 ">
+        <h1 className='text-xl text-black text-bold text-left font-bold font-inter'>Invite Others</h1>
+        <p className="text-justify w-full whitespace-normal">
+        Use email or generate a unique link to easily bring new
+members onboard and collaborate effectively.        </p>
+        <form className="bg-white  rounded px-8 pt-6 pb-8 mb-4 w-full">
 
-        {/** <img src={logopic} alt="accounts goal image" className='w-64 h-64 text-blue-500' />
-        * */} 
-        </div>
-       {/**  <div className='flex flex-row justify-start'>
-        <ul className="steps">
-  <li className="step step-primary"></li>
-  <li className="step step-primary"></li>
-  <li className="step"></li>
-  <li className="step"></li>
-</ul>
-        </div> * */}
-      
-        <br/><br/>
-        <div className="text-right px-32">
-          <h1 className='text-3xl text-bold text-left'>Invite Others</h1>
-          <p className="text-justify w-full whitespace-normal">
-            Use email or generate a unique link to easily bring new <br/> members onboard and collaborate effectively.
-          </p><br/><br/>
-          
-          <div className='flex flex-row justify-between'>
-          <h3>Add Members</h3>
-          <Link to="/generate-link" className="text-blue-500">Generate Link</Link>
+        <div className="mb-4">
+              <h2 className="block text-gray-700 text-sm font-bold mb-2 text-left">
+                Add Members
+              </h2>
+              <input
+              onChange={(e)=>setEmail(e.target.value)}
+              value={email}
+              name='email'
+               className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="fullname" 
+               type="text" 
+               placeholder="" />
+            </div>
+            {inputFields?.map((field) => (
+              <div key={field.id}>
+                      <input 
+                      onChange={(e) => handleChange(field.id, e.target.value)}
+                      value={field.value}
+                       className="shadow appearance-none border rounded-full w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-4" id="fullname" type="text" placeholder="" />
+              </div>
+            ))}
+      <div className='flex items-center gap-x-1 justify-end mb-4'>
+        <Link onClick={addInputField} className='text-[#FFA500] flex items-center gap-x-1 font-medium font-inter'>        <CiCirclePlus color='#FFA500'/>
+Add more members</Link>
+      </div>
+    
+          <div className="">
+            <button onClick={handleSubmit} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-40 rounded-full focus:outline-none focus:shadow-outline w-full" type="button">
+              Send Invitation
+            </button>
+            <Link className='font-inter font-normal text-[#777777] flex items-center gap-x-1 justify-center mt-3'>Skip <span className='flex'><MdKeyboardArrowRight /> <MdKeyboardArrowRight /> <MdKeyboardArrowRight /></span></Link>
           </div>
-          
-          <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full">
-          <div className='flex flex-col gap-y-1 mt-14 md:mt-4'>
-          
-          <input type="text" placeholder='odunsi@company.com'   name="email" className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
-          
-        </div>
-        <div className='flex flex-col gap-y-1 mt-14 md:mt-4'>
-        <input type="text" placeholder='odunsi@company.com'   name="email" className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
-        </div>
+        </form>
         
-        <div className='flex flex-col gap-y-1 mt-14 md:mt-4'>
-        <input type="text" placeholder='odunsi@company.com'   name="email" className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
-        </div>
-
-        <div className='flex flex-col gap-y-1 mt-14 md:mt-4'>
-        <input type="text" placeholder='odunsi@company.com'   name="email" className='border-2 rounded-2xl placeholder:text-[#d7d7d7] px-3 py-2 border-[#dfdfdf] outline-none w-full'/>
-        </div>
-        <br/>
-        <div className='flex justify-end'>
-          <h3 className='text-yellow-500 flex items-center'> <AiOutlinePlusCircle className="mr-2" /> Add more members </h3>
-          
-          </div>
-
-
-            
-    <br></br>
-            <div className="flex items-center justify-center">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-40 rounded-full focus:outline-none focus:shadow-outline" type="button">
-                Send Invitation
-              </button>
-              
-              {/* <p>Skip>>>   </p> */}
-             
-            </div>
-            <br/>
-            <div>
-            <p className='flex justify-center'> Skip&gt;&gt;&gt;    </p>
-            </div>
-            
-          </form>
-          
-        </div>
-      </div>
-      <div className='w-1/2  bg-blue-500 h-screen flex flex-col justify-end items-center'>
-      <div className='absolute top-[84px] left-[916px]'>
-        <img src={orgimage} alt="accounts goal organization image" className='w-[440px] h-[447px] text-blue-500' />
-      </div>
-        <h1 className='text-2xl text-bold text-white text-center'>Build, Grow, Thrive: Launch your Organization and <br/>Unite Visionaries</h1>
-
-        <p className='text-white mb-8'>Transforming your ideas into impact: Forge your Team and Amplify your <br/> Mission</p>
       </div>
     </div>
+    <div className='w-full h-full py-10  bg-blue-500  flex flex-col gap-y-6 justify- items-center'>
+    <div className='w-[300px]'>
+      <img src={orgimage} alt="accounts goal organization image" className=' text-blue-500 w-full h-full object-cover object-center' />
+    </div>
+    <div>
+
+    </div>
+  <div>
+  <h1 className='text-2xl font-bold text-white text-center'>Build, Grow, Thrive: Launch your Organization and <br/>Unite Visionaries</h1>
+
+<p className='text-[#f6f6f6] mb-8'>Transforming your ideas into impact: Forge your Team and Amplify your Mission</p>
+  </div>
+    </div>
+  </div>
   );
 }
 
